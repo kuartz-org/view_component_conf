@@ -33,7 +33,8 @@ construisent des vues complexes pour les applications Rails.
 
 
 
-## Fonctionnement
+# Fonctionnement
+
 
 Un _ViewComponent_ est objet Ruby et un _template_.
 
@@ -87,15 +88,25 @@ En utilisant des composants réutilisables, on facilite la cohérence de l'UI.
 
 #### TL;DR
 
-- Fonctionne le mieux avec les _partials_ qui sont **réutilisées** ou que l'on
-veut **tester** directement.
-
-- Transformez les _templates_ qui comporte **beaucoup de Ruby**
-en ViewComponents.
+<ul style="list-style-type: none">
+  <li class="fragment">
+    ✅ Fonctionne le mieux avec les <em>partials</em> qui sont
+    <strong>réutilisées</strong> ou que l'on veut
+    <strong>tester</strong> directement.
+  </li>
+  <li class="fragment">
+    ✅ Transformez les <em>templates</em> qui comporte
+    <strong>beaucoup de Ruby</strong> en ViewComponents.
+  </li>
+</ul>
 
 
 
 # Bonnes pratiques
+
+Note:
+Opinion construit sur la base de l'expérience des équipes de GitHub, des articles
+que j'ai pu lire et de l'expérience chez Kuartz.
 
 
 #### Deux types de composants (1/2)
@@ -109,10 +120,7 @@ en ViewComponents.
 <%= render(ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
 ```
 
-<img alt="Default button" src="images/button_default.png" style="margin: .5rem">
-<img alt="Primary button" src="images/button_primary.png" style="margin: .5rem">
-<img alt="Danger button" src="images/button_danger.png" style="margin: .5rem">
-<img alt="Invisible button" src="images/button_invisible.png" style="margin: .5rem">
+<img alt="Buttons" src="images/buttons.png" class="shadow-img">
 
 Note:
 Composants commun pour l'UI
@@ -125,8 +133,51 @@ Composants commun pour l'UI
 <%= render(User::ContributorComponent.new(user: @user)) %>
 ```
 
-<img alt="Contributor component" src="images/contributor_component.png" style="margin: .5rem" class="shadow-img">
+<img alt="Contributor component" src="images/contributor_component.png" class="shadow-img">
 
 Note:
 Pour transformer un objet métier (souvent un modèle _ActiveRecord_)
 en un ensemble de composants génériques.
+
+
+#### Organisation
+
+> "Good frameworks are extracted, not invented." DHH
+
+Spécifique 👉 Générique
+
+Note:
+1. Composant spécifique à un cas d'utilisation implémenté dans l'application.
+1. Composant adapté pour une utilisation générale dans plusieurs endroits de l'application.
+1. Composant extrait dans une Gem et documenté dans [Lookbook](https://github.com/ViewComponent/lookbook).
+
+
+#### 💡 Tips
+
+<ul style="list-style-type: none">
+  <li class="fragment">✅ La plupart des méthodes d'instance peuvent être privées</li>
+  <li class="fragment">✅ Préférer les ViewComponents aux <em>partials</em></li>
+  <li class="fragment">✅ Préférer les ViewComponents aux <em>helpers</em> générant du HTML</li>
+  <li class="fragment">✅ Éviter le <em>Global state</em></li>
+  <li class="fragment">✅ Éviter les requêtes à la base de données</li>
+</ul>
+
+
+✅ Passer un objet plutôt que 3+ attributs d'objet
+
+```ruby[1-11|2-3|7-8]
+class MyComponent < ViewComponent::Base
+  # bad
+  def initialize(repository_name:, repository_owner:, repository_created_at:)
+    #...
+  end
+
+  # good
+  def initialize(repository:)
+    #...
+  end
+end
+```
+
+
+# Merci <!-- .element: class="r-fit-text" -->
