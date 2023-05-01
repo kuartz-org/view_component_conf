@@ -33,34 +33,56 @@ construisent des vues complexes pour les applications Rails.
 
 
 
-# Les bases
+## Fonctionnement
+
+Un _ViewComponent_ est objet Ruby et un _template_.
+
+```ruby
+# app/components/message_component.rb
+class MessageComponent < ViewComponent::Base
+  def initialize(name:)
+    @name = name
+  end
+end
+```
+
+```erb
+<%# app/components/message_component.html.erb %>
+<h1>Hello, <%= @name %>!</h1>
+```
 
 
-## Installation
+Une _instance_ qui est passé au `#render` de Rails.
 
+```erb
+<%# app/views/demo/index.html.erb %>
+<%= render(MessageComponent.new(name: "World")) %>
+```
 
-## Les composants
+Qui génère le HTML suivant :
+
+```html
+<h1>Hello, World!</h1>
+```
 
 
 
 # Pourquoi ViewComponent ?
 
 
-## Single Responsibility Principle
+##### Single Responsibility Principle
 _Principe de responsabilité unique_
 
-Note:
 Garder la logique dans la vue déroge au SRP et tend à rendre le code complexe.
 
 
-## Don't Repeat Yourself
+##### Don't Repeat Yourself
 _Ne vous répétez pas_
 
-Note:
 En utilisant des composants réutilisables, on facilite la cohérence de l'UI.
 
 
-## Testabilité
+##### Testabilité & Performance
 
 
 #### TL;DR
@@ -68,5 +90,43 @@ En utilisant des composants réutilisables, on facilite la cohérence de l'UI.
 - Fonctionne le mieux avec les _partials_ qui sont **réutilisées** ou que l'on
 veut **tester** directement.
 
-- Transformez les _partials_ qui comporte **beaucoup de Ruby**
+- Transformez les _templates_ qui comporte **beaucoup de Ruby**
 en ViewComponents.
+
+
+
+# Bonnes pratiques
+
+
+#### Deux types de composants (1/2)
+
+**Génériques**
+
+```erb [1|2|3|4]
+<%= render(ButtonComponent.new) { "Default" } %>
+<%= render(ButtonComponent.new(scheme: :primary)) { "Primary" } %>
+<%= render(ButtonComponent.new(scheme: :danger)) { "Danger" } %>
+<%= render(ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
+```
+
+<img alt="Default button" src="images/button_default.png" style="margin: .5rem">
+<img alt="Primary button" src="images/button_primary.png" style="margin: .5rem">
+<img alt="Danger button" src="images/button_danger.png" style="margin: .5rem">
+<img alt="Invisible button" src="images/button_invisible.png" style="margin: .5rem">
+
+Note:
+Composants commun pour l'UI
+
+
+#### Deux types de composants (2/2)
+**_App-specific_**
+
+```erb
+<%= render(User::ContributorComponent.new(user: @user)) %>
+```
+
+<img alt="Contributor component" src="images/contributor_component.png" style="margin: .5rem" class="shadow-img">
+
+Note:
+Pour transformer un objet métier (souvent un modèle _ActiveRecord_)
+en un ensemble de composants génériques.
