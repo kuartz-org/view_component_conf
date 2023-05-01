@@ -90,12 +90,12 @@ En utilisant des composants réutilisables, on facilite la cohérence de l'UI.
 
 <ul style="list-style-type: none">
   <li class="fragment">
-    ✅ Fonctionne le mieux avec les <em>partials</em> qui sont
+    ✅ Pour remplacer les <em>partials</em> qui sont
     <strong>réutilisées</strong> ou que l'on veut
     <strong>tester</strong> directement.
   </li>
   <li class="fragment">
-    ✅ Transformez les <em>templates</em> qui comporte
+    ✅ Pour remplacer les <em>templates</em> qui comporte
     <strong>beaucoup de Ruby</strong> en ViewComponents.
   </li>
 </ul>
@@ -178,6 +178,7 @@ class MyComponent < ViewComponent::Base
   end
 end
 ```
+
 
 
 # Merci <!-- .element: class="r-fit-text" -->
