@@ -49,9 +49,24 @@ construisent des vues complexes pour les applications Rails.
 ## Single Responsibility Principle
 _Principe de responsabilité unique_
 
+Note:
+Garder la logique dans la vue déroge au SRP et tend à rendre le code complexe.
+
 
 ## Don't Repeat Yourself
 _Ne vous répétez pas_
 
+Note:
+En utilisant des composants réutilisables, on facilite la cohérence de l'UI.
+
 
 ## Testabilité
+
+
+#### TL;DR
+
+- Fonctionne le mieux avec les _partials_ qui sont **réutilisées** ou que l'on
+veut **tester** directement.
+
+- Transformez les _partials_ qui comporte **beaucoup de Ruby**
+en ViewComponents.
