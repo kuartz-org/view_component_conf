@@ -1,6 +1,6 @@
-# Comment gérer la complexité des vues en Rails avec ViewComponent
+# Comment gérer la complexité des vues en Rails avec ViewComponent ?
 
-## Présentation
+[Présentation en ligne](https://kuartz-org.github.io/view_component_conf)
 
 ## En local
 

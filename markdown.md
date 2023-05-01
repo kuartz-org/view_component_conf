@@ -1,4 +1,4 @@
-<img alt="Complexité des vues" src="/images/view_complexity.png" width="896" height="512" class="shadow-img">
+<img alt="Complexité des vues" src="images/view_complexity.png" width="896" height="512" class="shadow-img">
 
 Note:
 Une application Web est vite amenée à présenter des vues complexes.
@@ -10,7 +10,7 @@ Des éléments peuvent être ajoutés ou supprimés dynamiquement.
 Il faut respecter la cohérence de l'UI.
 
 
-<img alt="Code d'une vue" src="/images/vue-code.png" width="589" height="647" class="shadow-img">
+<img alt="Code d'une vue" src="images/vue-code.png" width="589" height="647" class="shadow-img">
 
 Note:
 Cela peut amener à des vues complexes et difficiles à maintenir.
@@ -19,7 +19,7 @@ Même avec l'utilisation de partials et helpers,
 non a de la logique dans les vues.
 
 
-<img alt="ViewComponent" src="/images/view_component.png" width="600" height="300" class="shadow-img">
+<img alt="ViewComponent" src="images/view_component.png" width="600" height="300" class="shadow-img">
 
 - inspiré par les avantages de React
 
