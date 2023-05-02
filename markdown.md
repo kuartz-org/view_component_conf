@@ -53,7 +53,7 @@ end
 ```
 
 
-Une _instance_ qui est passé au `#render` de Rails.
+Une _instance_ qui est passée au `#render` de Rails.
 
 ```erb
 <%# app/views/demo/index.html.erb %>
@@ -95,7 +95,7 @@ En utilisant des composants réutilisables, on facilite la cohérence de l'UI.
     <strong>tester</strong> facilement.
   </li>
   <li class="fragment">
-    ✅ Pour remplacer les <em>templates</em> qui comporte
+    ✅ Pour remplacer les <em>templates</em> qui comportent
     <strong>beaucoup de Ruby</strong> en ViewComponents.
   </li>
 </ul>
