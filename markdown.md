@@ -16,7 +16,7 @@ Note:
 Cela peut amener à des vues complexes et difficiles à maintenir.
 
 Même avec l'utilisation de partials et helpers,
-non a de la logique dans les vues.
+on a de la logique dans les vues.
 
 
 <img alt="ViewComponent" src="images/view_component.png" width="600" height="300" class="shadow-img">
