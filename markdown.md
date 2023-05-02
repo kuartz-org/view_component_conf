@@ -92,7 +92,7 @@ En utilisant des composants réutilisables, on facilite la cohérence de l'UI.
   <li class="fragment">
     ✅ Pour remplacer les <em>partials</em> qui sont
     <strong>réutilisées</strong> ou que l'on veut
-    <strong>tester</strong> directement.
+    <strong>tester</strong> facilement.
   </li>
   <li class="fragment">
     ✅ Pour remplacer les <em>templates</em> qui comporte
