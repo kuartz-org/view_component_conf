@@ -95,7 +95,7 @@ En utilisant des composants réutilisables, on facilite la cohérence de l'UI et
 la maintenance
 
 
-##### Performance & Testabilité
+##### Performance
 
 ~10x plus rapide que les _partials_ dans des cas d'utilisation réels
 
